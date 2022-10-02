@@ -1,0 +1,79 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="card">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
+      Stock Details
+    </h3>
+    <div class="card-body">
+      <div id="table" class="table-editable">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#exampleModalLong"
+        >
+          Add Stock
+        </button>
+        <table
+          class="table table-bordered table-responsive-md table-striped text-center"
+        >
+          <tr>
+            <th class="text-center">Comapny Code</th>
+            <th class="text-center">Company Name</th>
+            <th class="text-center">Stock Code/Name</th>
+            <th class="text-center">Stock Price</th>
+            <th class="text-center">Valid Date</th>
+            <th class="text-center">Action</th>
+          </tr>
+          <tr *ngFor="let stock of stockData; let id = index">
+            <td>
+              <span contenteditable="true">{{ stock.companyCode }}</span>
+            </td>
+            <td>
+              <span contenteditable="true">{{ stock.companyName }}</span>
+            </td>
+            <td>
+              <span contenteditable="true"
+                >{{ stock.stockCode }}/{{ stock.stockName }}</span
+              >
+            </td>
+            <td>
+              <span contenteditable="true">{{ stock.stockPrice }}</span>
+            </td>
+            <td>
+              <span contenteditable="true">{{ stock.validDate }}</span>
+            </td>
+            <td>
+              <span class="table-remove">
+                <button
+                  type="button"
+                  mdbBtn
+                  color="danger"
+                  rounded="true"
+                  size="sm"
+                  class="btn btn-outline-primary"
+                  (click)="remove(stock.id)"
+                >
+                  <i class="fa fa-trash" aria-hidden="true"></i>Delete
+                </button>
+              </span>
+              <span class="table-remove">
+                <button
+                  type="button"
+                  mdbBtn
+                  color="danger"
+                  rounded="true"
+                  size="sm"
+                  class="btn btn-outline-primary"
+                  (click)="remove(stock.id)"
+                >
+                  <i class="fa fa-trash" aria-hidden="true"></i>Edit
+                </button>
+              </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

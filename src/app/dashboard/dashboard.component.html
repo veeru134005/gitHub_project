@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Boxicons CDN Link -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <app-header></app-header>
+    <!-- <app-stockheader></app-stockheader> -->
+    <div class="home-content">
+      <div class="overview-boxes">
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic" style="font-size: 15px">Total Companies</div>
+            <div class="number">40</div>
+            <div class="indicator">
+              <i class="bx bx-up-arrow-alt"></i>
+              <span class="text">Up from lastYear</span>
+            </div>
+          </div>
+          <i class="bx bxs-group cart"></i>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic" style="font-size: 15px">
+              Minimum Stock Value
+            </div>
+            <div class="number">$38</div>
+            <div class="indicator">
+              <i class="bx bx-up-arrow-alt"></i>
+              <span class="text">Up from lastYear</span>
+            </div>
+          </div>
+          <i class="bx bx-trending-up cart two"></i>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic" style="font-size: 15px">
+              Maximum Stock Value
+            </div>
+            <div class="number">$150</div>
+            <div class="indicator">
+              <i class="bx bx-up-arrow-alt"></i>
+              <span class="text">Up from lastYear</span>
+            </div>
+          </div>
+          <i class="bx bx-trending-up cart two"></i>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic" style="font-size: 15px">
+              Average Stock Value
+            </div>
+            <div class="number">$96</div>
+            <div class="indicator">
+              <i class="bx bx-up-arrow-alt"></i>
+              <span class="text">Up From lastYear</span>
+            </div>
+          </div>
+          <i class="bx bx-trending-up cart four"></i>
+        </div>
+      </div>
+
+      <div class="sales-boxes">
+        <div class="recent-sales box">
+          <div class="title">Recent Stock Data</div>
+          <div class="container-fluid">
+            <div class="card">
+              <h3
+                class="card-header text-center font-weight-bold text-uppercase py-4"
+              >
+                Stock Details
+              </h3>
+              <div class="card-body">
+                <div id="table" class="table-editable">
+                  <table
+                    class="table table-bordered table-responsive-md table-striped text-center"
+                  >
+                    <tr>
+                      <th class="text-center">Comapny Code</th>
+                      <th class="text-center">Company Name</th>
+                      <th class="text-center">Stock Code/Name</th>
+                      <th class="text-center">Stock Price</th>
+                      <th class="text-center">Valid Date</th>
+                    </tr>
+                    <tr *ngFor="let stock of stockData; let id = index">
+                      <td>
+                        <span contenteditable="true">{{
+                          stock.companyCode
+                        }}</span>
+                      </td>
+                      <td>
+                        <span contenteditable="true">{{
+                          stock.companyName
+                        }}</span>
+                      </td>
+                      <td>
+                        <span contenteditable="true"
+                          >{{ stock.stockCode }}/{{ stock.stockName }}</span
+                        >
+                      </td>
+                      <td>
+                        <span contenteditable="true">{{
+                          stock.stockPrice
+                        }}</span>
+                      </td>
+                      <td>
+                        <span contenteditable="true">{{
+                          stock.validDate
+                        }}</span>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

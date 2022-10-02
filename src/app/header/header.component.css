@@ -1,0 +1,12 @@
+.bg-dark {
+    border-radius: 10px;
+    margin: 0px 10px;
+    background-color: #7566bd !important;
+}
+
+.imgTag:hover{
+    background: #DDDDDD;
+    color: #1661C2;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #DDDDDD, 0 0 25px #DDDDDD, 0 0 50px #DDDDDD, 0 0 100px #DDDDDD;
+}

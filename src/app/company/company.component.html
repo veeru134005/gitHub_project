@@ -1,0 +1,162 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="card">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
+      Company Details
+    </h3>
+    <div class="card-body">
+      <div id="table" class="table-editable">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#exampleModalLong"
+        >
+          Add Company
+        </button>
+
+        <table
+          class="table table-bordered table-responsive-md table-striped text-center"
+        >
+          <tr>
+            <th class="text-center">Comapny Code</th>
+            <th class="text-center">Company Name</th>
+            <th class="text-center">Company CEO</th>
+            <th class="text-center">Company Turnover</th>
+            <th class="text-center">Website</th>
+            <th class="text-center">Action</th>
+          </tr>
+          <tr *ngFor="let comp of companyData; let id = index">
+            <td>
+              <span contenteditable="true">{{ comp.company_id }}</span>
+            </td>
+            <td>
+              <span contenteditable="true">{{ comp.company_name }}</span>
+            </td>
+            <td>
+              <span contenteditable="true">{{ comp.company_ceo }}</span>
+            </td>
+            <td>
+              <span contenteditable="true">{{ comp.company_turnover }}Cr.</span>
+            </td>
+            <td>
+              <span contenteditable="true">{{ comp.company_website }}</span>
+            </td>
+            <td>
+              <button
+                class="btn btn-primary btn-sm"
+                style="margin: 3px"
+                data-toggle="modal"
+                data-target="#exampleModalLong"
+              >
+                <i class="fa fa-edit"></i> Edit
+              </button>
+
+              <button class="btn btn-primary btn-sm">
+                <i class="fa fa-trash"></i>
+                <a
+                  title="delete"
+                  class="btn-primary"
+                  onclick="return confirm('Are you sure you want to delete this item')"
+                  >Delete</a
+                >
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #noCompanies>
+  <h5>There are no clients in the system.</h5>
+</ng-template>
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModalLong"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLongTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add New Company</h4>
+      </div>
+      <form action="action_page.php" method="post">
+        <div class="container">
+          <div class="editableForm">
+            <label for="inputEmail" class="sr-only">Company Code</label>Company
+            Code:
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Company Code"
+              required
+              autofocus
+            />
+          </div>
+          <div class="editableForm">
+            <label for="inputPassword" class="sr-only">Company Name</label
+            >Company Name:
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Company Name"
+              required
+            />
+          </div>
+          <div class="editableForm">
+            <label for="inputPassword" class="sr-only">Company CEO</label
+            >Company CEO:
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Company CEO"
+              required
+            />
+          </div>
+          <div class="editableForm">
+            <label for="inputPassword" class="sr-only">Company Turnover</label
+            >Company Turnover:
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Company Turnover In Crore"
+              required
+            />
+          </div>
+          <div class="editableForm">
+            <label for="inputPassword" class="sr-only"
+              >Company Website Details</label
+            >Company Website Details:
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Company Website Url"
+              required
+            />
+          </div>
+        </div>
+        <div class="modal-footer" style="flex-wrap: nowrap">
+          <button
+            type="button"
+            class="btn btn-secondary button_add"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+          <span> </span>
+          <button type="button" class="btn btn-primary button_add">
+            Save changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
