@@ -28,28 +28,27 @@
           </tr>
           <tr *ngFor="let comp of companyData; let id = index">
             <td>
-              <span contenteditable="false">{{ comp.company_id }}</span>
+              <span contenteditable="false">{{ comp.companycode }}</span>
             </td>
             <td>
-              <span contenteditable="false">{{ comp.company_name }}</span>
+              <span contenteditable="false">{{ comp.companyname }}</span>
             </td>
             <td>
-              <span contenteditable="false">{{ comp.company_ceo }}</span>
+              <span contenteditable="false">{{ comp.companyceo }}</span>
             </td>
             <td>
-              <span contenteditable="false"
-                >{{ comp.company_turnover }}Cr.</span
-              >
+              <span contenteditable="false">{{ comp.companyturnover }}Cr.</span>
             </td>
             <td>
-              <span contenteditable="false">{{ comp.company_website }}</span>
+              <span contenteditable="false">{{ comp.companywebsite }}</span>
             </td>
             <td>
               <button
                 class="btn btn-primary btn-sm"
                 style="margin: 3px"
                 data-toggle="modal"
-                data-target="#exampleModalLong"
+                data-target="#updateModal"
+                (click)="updateObj(comp)"
               >
                 <i class="fa fa-edit"></i> Edit
               </button>
@@ -59,7 +58,7 @@
                 <a
                   title="delete"
                   class="btn-primary"
-                  onclick="return confirm('Are you sure you want to delete this item')"
+                  (click)="confirm(comp.id, comp)"
                   >Delete</a
                 >
               </button>
@@ -86,8 +85,7 @@
       <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Add New Company</h4>
       </div>
-      <form #ngForm="ngForm">
-        {{ addCompany | json }}
+      <form (ngSubmit)="addCompany()" #ngForm="ngForm">
         <div class="container">
           <div class="editableForm">
             <label for="inputEmail" class="sr-only">Company Code</label
@@ -99,47 +97,56 @@
               placeholder="Company Code"
               required
               autofocus
+              name="Company Code"
+              [(ngModel)]="companyModal.companycode"
             />
           </div>
           <div class="editableForm">
-            <label for="inputPassword" class="sr-only">Company Name</label
+            <label class="sr-only">Company Name</label
             ><small>Company Name:</small>
             <input
               type="text"
               class="form-control"
               placeholder="Company Name"
               required
+              name="Company Name"
+              [(ngModel)]="companyModal.companyname"
             />
           </div>
           <div class="editableForm">
-            <label for="inputPassword" class="sr-only">Company CEO</label
+            <label class="sr-only">Company CEO</label
             ><small>Company CEO:</small>
             <input
               type="text"
               class="form-control"
               placeholder="Company CEO"
               required
+              name="Company CEO"
+              [(ngModel)]="companyModal.companyceo"
             />
           </div>
           <div class="editableForm">
-            <label for="inputPassword" class="sr-only">Company Turnover</label
+            <label class="sr-only">Company Turnover</label
             ><small>Company Turnover:</small>
             <input
               type="text"
               class="form-control"
               placeholder="Company Turnover In Crore"
               required
+              name="Company Turnover In Crore"
+              [(ngModel)]="companyModal.companyturnover"
             />
           </div>
           <div class="editableForm">
-            <label for="inputPassword" class="sr-only"
-              >Company Website Details</label
+            <label class="sr-only">Company Website Details</label
             ><small>Company Website Details:</small>
             <input
               type="text"
               class="form-control"
               placeholder="Company Website Url"
               required
+              name="companywebsite"
+              [(ngModel)]="companyModal.companywebsite"
             />
           </div>
         </div>
@@ -152,7 +159,116 @@
             Close
           </button>
           <span> </span>
-          <button type="button" class="btn btn-primary button_add">
+          <button
+            type="button"
+            class="btn btn-primary button_add"
+            data-dismiss="modal"
+            (click)="addCompany()"
+          >
+            Rigister
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Update form Start -->
+<div
+  class="modal fade"
+  id="updateModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="updateModal"
+  aria-hidden="false"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">
+          Update Company Detaials
+        </h4>
+      </div>
+      <form #ngForm="ngForm">
+        <div class="container">
+          <div class="editableForm">
+            <label class="sr-only">Company Code</label
+            ><small>Company Code</small>
+
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Company Code"
+              required
+              autofocus
+              name="Company Code"
+              [(ngModel)]="updateCompModal.companycode"
+            />
+          </div>
+          <div class="editableForm">
+            <label class="sr-only">Company Name</label
+            ><small>Company Name:</small>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Company Name"
+              required
+              name="Company Name"
+              [(ngModel)]="updateCompModal.companyname"
+            />
+          </div>
+          <div class="editableForm">
+            <label class="sr-only">Company CEO</label
+            ><small>Company CEO:</small>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Company CEO"
+              required
+              name="Company CEO"
+              [(ngModel)]="updateCompModal.companyceo"
+            />
+          </div>
+          <div class="editableForm">
+            <label class="sr-only">Company Turnover</label
+            ><small>Company Turnover:</small>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Company Turnover In Crore"
+              required
+              name="Company Turnover In Crore"
+              [(ngModel)]="updateCompModal.companyturnover"
+            />
+          </div>
+          <div class="editableForm">
+            <label class="sr-only">Company Website Details</label
+            ><small>Company Website Details:</small>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Company Website Url"
+              required
+              name="companywebsite"
+              [(ngModel)]="updateCompModal.companywebsite"
+            />
+          </div>
+        </div>
+        <div class="modal-footer" style="flex-wrap: nowrap">
+          <button
+            type="button"
+            class="btn btn-secondary button_add"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+          <span> </span>
+          <button
+            type="button"
+            class="btn btn-primary button_add"
+            data-dismiss="modal"
+            (click)="updateCompany()"
+          >
             Save changes
           </button>
         </div>
@@ -160,3 +276,4 @@
     </div>
   </div>
 </div>
+<!-- Update form end -->

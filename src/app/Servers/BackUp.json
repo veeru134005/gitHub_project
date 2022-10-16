@@ -1,0 +1,96 @@
+{
+    "getStats": [
+      {
+        "totalCompanies": 40,
+        "minStockPrice": 45,
+        "maxStockPrice": 100,
+        "averageStockPrice": 200
+      }
+    ],
+    "getRecentStockDetails": [
+      {
+        "id": "1",
+        "companyCode": "CNGA8745",
+        "companyName": "EFRON",
+        "stockCode": "1236",
+        "stockName": "IRON",
+        "stockPrice": "12367",
+        "validDate": "12/30/2025"
+      },
+      {
+        "id": "1234",
+        "companyCode": "CNGA7298",
+        "companyName": "IRONY",
+        "stockCode": "764",
+        "stockName": "TEA",
+        "stockPrice": "687",
+        "validDate": "12/30/2025"
+      },
+      {
+        "id": "1239",
+        "companyCode": "CNG87292",
+        "companyName": "IRONI",
+        "stockCode": "7623",
+        "stockName": "GOLD",
+        "stockPrice": "689",
+        "validDate": "12/30/2027"
+      }
+    ],
+    "company": [
+      {
+        "id": "1239",
+        "companycode": "2585",
+        "companyname": "silver",
+        "companywebsite": "yahoo",
+        "companyturnover": "4387",
+        "companyceo": "math"
+      },
+      {
+        "id": "3562",
+        "companycode": "87878",
+        "companyname": "silver",
+        "companywebsite": "yahoo",
+        "companyturnover": "4387",
+        "companyceo": "math"
+      },
+      {
+        "id": "3525",
+        "companycode": "9585",
+        "companyname": "silver",
+        "companywebsite": "yahoo",
+        "companyturnover": "4387",
+        "companyceo": "math"
+      },
+      {
+        "id": "25452",
+        "companycode": "258",
+        "companyname": "silver",
+        "companywebsite": "yahoo",
+        "companyturnover": "4387",
+        "companyceo": "math"
+      },
+      {
+        "id": "25452",
+        "companycode": "3526",
+        "companyname": "silver",
+        "companywebsite": "yahoo",
+        "companyturnover": "4387",
+        "companyceo": "math"
+      }, {
+        "id": "98585",
+        "companycode": "254585",
+        "companyname": "silver",
+        "companywebsite": "yahoo",
+        "companyturnover": "4387",
+        "companyceo": "math"
+      },
+       {
+        "id": "1239",
+        "companycode": "5858",
+        "companyname": "silver",
+        "companywebsite": "yahoo",
+        "companyturnover": "4387",
+        "companyceo": "math"
+      }
+    ]
+  }

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms'
 import { CompanyModal } from '../models/CompanyModal';
-import { searchResult } from '../models/Search';
 import { CompanyserviceService } from '../Services/companyservice.service';
 
 @Component({
@@ -13,12 +11,34 @@ export class CompanyComponent implements OnInit {
 
   constructor(private service:CompanyserviceService) { }
 
-  companyData=[]
+  companyData:CompanyModal[];
 
-  addCompany=CompanyModal;
+  companyModal=new CompanyModal("","",0,"","",Math.floor( Math.random()));
+
+  updateCompModal=new CompanyModal("","",0,"","",Math.floor( Math.random()));
     
   ngOnInit(): void {
     this.service.getCompanies().subscribe((res)=>this.companyData=res);
   }
+
+  addCompany(){
+    this.service.companyRegistration(this.companyModal).subscribe(res=>this.companyData.push(res));
+  }
+  confirm(data:any,obj:CompanyModal){
+    if(confirm("Are you sure to delete "+data)) {
+      this.service.deeteCompany(data).subscribe(res=>{
+        this.service.getCompanies().subscribe((res)=>this.companyData=res)
+      });
+    }
+  }
+  updateObj(data:CompanyModal){
+    this.updateCompModal=data;
+  }
+  updateCompany(){
+       this.service.updateCompany(this.updateCompModal).subscribe(res=>{
+        this.service.getCompanies().subscribe((res)=>this.companyData=res)
+      })
+  }
+  
   
 }

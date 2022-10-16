@@ -11,7 +11,6 @@ export class CompanyModal{
     description?: string;
     company_website?:string;
 
-    constructor(sectorName,company_id,code){
-        
-    }
+    constructor(public companycode:string,public companyname:string,public companyturnover:number,public companyceo:string
+        ,public companywebsite:string,public id:number){}
 }

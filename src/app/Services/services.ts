@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http"
 import { environment } from "src/environments/environment"
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { CompanyModal } from "../models/CompanyModal";
 
 @Injectable({
     providedIn:'root'
@@ -19,4 +20,19 @@ export class CommonService{
             return throwError(err);
         }));
     }
+
+    post(uri:string,data:any):Observable<any>{
+        return this.http.post(this.url+uri,data).pipe(catchError((err:HttpErrorResponse)=>{
+            return throwError(err);
+        }));
+    }
+
+    delete(uri:string,data:any):Observable<any> {
+    return this.http.delete(this.url+uri+"/"+data);
+    }
+
+    put(uri: string, data: CompanyModal):Observable<any> {
+        return this.http.put(this.url+uri,data);
+      }
+
 }
