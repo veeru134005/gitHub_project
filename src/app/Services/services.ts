@@ -31,7 +31,7 @@ export class CommonService{
     return this.http.delete(this.url+uri+"/"+data);
     }
 
-    put(uri: string, data: CompanyModal):Observable<any> {
+    put(uri: string, data: any):Observable<any> {
         return this.http.put(this.url+uri,data);
       }
 

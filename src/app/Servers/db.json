@@ -7,16 +7,7 @@
       "averageStockPrice": 200
     }
   ],
-  "getRecentStockDetails": [
-    {
-      "id": "1",
-      "companyCode": "CNGA8745",
-      "companyName": "EFRON",
-      "stockCode": "1236",
-      "stockName": "IRON",
-      "stockPrice": "12367",
-      "validDate": "12/30/2025"
-    },
+  "stock": [
     {
       "id": "1234",
       "companyCode": "CNGA7298",
@@ -32,8 +23,26 @@
       "companyName": "IRONI",
       "stockCode": "7623",
       "stockName": "GOLD",
-      "stockPrice": "689",
+      "stockPrice": "8900",
       "validDate": "12/30/2027"
+    },
+    {
+      "id": "143",
+      "companyCode": "CNG87292",
+      "companyName": "IRONI",
+      "stockCode": "7623",
+      "stockName": "GOLD",
+      "stockPrice": "000",
+      "validDate": "12/30/2027"
+    },
+    {
+      "companyCode": "25452",
+      "companyName": "hygy",
+      "stockCode": 0,
+      "stockName": "2545",
+      "stockPrice": "254",
+      "id": "aOZDuEZ",
+      "validDate": "2022-10-16T21:03:39.495Z"
     }
   ],
   "company": [
@@ -43,15 +52,8 @@
       "companyname": "silver",
       "companywebsite": "yahoo",
       "companyturnover": "4387",
-      "companyceo": "math"
-    },
-    {
-      "id": "25452",
-      "companycode": "258",
-      "companyname": "silver",
-      "companywebsite": "yahoo",
-      "companyturnover": "4387",
-      "companyceo": "math"
+      "companyceo": "math",
+      "stockExchangeNames": "NSE"
     },
     {
       "id": "25452",
@@ -59,7 +61,8 @@
       "companyname": "silver",
       "companywebsite": "yahoo",
       "companyturnover": "4387",
-      "companyceo": "math"
+      "companyceo": "math",
+      "stockExchangeNames": "NSE"
     },
     {
       "id": "1239",
@@ -67,7 +70,8 @@
       "companyname": "silver",
       "companywebsite": "yahoo",
       "companyturnover": "4387",
-      "companyceo": "math"
+      "companyceo": "math",
+      "stockExchangeNames": "BSE"
     },
     {
       "companycode": "Veera",
@@ -75,7 +79,8 @@
       "companyturnover": "85000",
       "companyceo": "hyder",
       "companywebsite": "hdhd.wwea",
-      "id": "grI-Ch3"
+      "id": "grI-Ch3",
+      "stockExchangeNames": "NSE"
     },
     {
       "companycode": "0000",
@@ -83,7 +88,44 @@
       "companyturnover": "52",
       "companyceo": "hhh",
       "companywebsite": "yyytytytyty.com",
-      "id": "Og49Y-2"
+      "id": "Og49Y-2",
+      "stockExchangeNames": "BSE"
+    },
+    {
+      "companycode": "Cnga2545",
+      "companyname": "hdydara",
+      "companyturnover": "3652",
+      "companyceo": "hydeai",
+      "companywebsite": "www.goo.com",
+      "id": "kfq8Axy",
+      "stockExchangeNames": "NSE"
+    },
+    {
+      "companycode": "Hyderabad",
+      "companyname": "hyderabd",
+      "companyturnover": "2485",
+      "companyceo": "hyderaba",
+      "companywebsite": "hdhdhh",
+      "id": "qYNnbo4",
+      "stockExchangeNames": "NSE"
+    },
+    {
+      "companycode": "hydera",
+      "companyname": "hyder",
+      "companyturnover": "254",
+      "companyceo": "yd",
+      "companywebsite": "hyg/cgch",
+      "id": "1idKmqU",
+      "stockExchangeNames": "BSE"
+    },
+    {
+      "companycode": "hyd",
+      "companyname": "hy",
+      "companyturnover": "525",
+      "companyceo": "hy",
+      "companywebsite": "hhkh",
+      "id": "GBNaFFB",
+      "stockExchangeNames": "BSE"
     }
   ]
 }

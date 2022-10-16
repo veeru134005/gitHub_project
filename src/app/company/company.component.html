@@ -24,6 +24,7 @@
             <th class="text-center">Company CEO</th>
             <th class="text-center">Company Turnover</th>
             <th class="text-center">Website</th>
+            <th class="text-center">StockExchange</th>
             <th class="text-center">Action</th>
           </tr>
           <tr *ngFor="let comp of companyData; let id = index">
@@ -41,6 +42,9 @@
             </td>
             <td>
               <span contenteditable="false">{{ comp.companywebsite }}</span>
+            </td>
+            <td>
+              <span contenteditable="false">{{ comp.stockExchangeNames }}</span>
             </td>
             <td>
               <button
@@ -149,6 +153,21 @@
               [(ngModel)]="companyModal.companywebsite"
             />
           </div>
+          <div class="editableForm">
+            <small>Select Stock Exchage:</small>
+            <select
+              class="form-control"
+              name="stockExchangeNames"
+              [(ngModel)]="companyModal.stockExchangeNames"
+            >
+              <option value="Select" selected disabled>Select</option>
+              <option value="NSE">NSE</option>
+              <option value="BSE">BSE</option>
+              <!-- <option *ngFor="let stock of stockExchange" [value]="stock">
+                {{ stock }}
+              </option> -->
+            </select>
+          </div>
         </div>
         <div class="modal-footer" style="flex-wrap: nowrap">
           <button
@@ -252,6 +271,23 @@
               name="companywebsite"
               [(ngModel)]="updateCompModal.companywebsite"
             />
+          </div>
+          <div class="editableForm">
+            <small>Select Stock Exchage:</small>
+            <select
+              class="form-control"
+              name="stockExchangeNames"
+              [(ngModel)]="updateCompModal.stockExchangeNames"
+            >
+              <option value="select">Select</option>
+              <option
+                *ngFor="let stock of stockExchange"
+                [selected]="updateCompModal.stockExchangeNames == stock"
+                [value]="stock"
+              >
+                {{ stock }}
+              </option>
+            </select>
           </div>
         </div>
         <div class="modal-footer" style="flex-wrap: nowrap">

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { StockModal } from '../models/StockModal';
+import { StockService } from '../Services/stock.service';
 
 @Component({
   selector: 'app-stock',
@@ -7,56 +9,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StockComponent implements OnInit {
 
-  constructor() { }
+  constructor(private stockSer:StockService) { }
+
+  stockData=[];
+
+  addStockModal=new StockModal("","",0,"",0,Math.floor( Math.random()),new Date);
+
+  updateStockModal=new StockModal("","",0,"",0,Math.floor( Math.random()),new Date);
 
   ngOnInit(): void {
+    this.stockSer.getStock().subscribe(res=>this.stockData=res);
   }
-  comp={
-    "id":"",
-    "company_id":"",
-    "company_name":""
+  addStock(){
+    this.addStockModal.setValidDate(new Date);
+    this.stockSer.stockRegistration(this.addStockModal).subscribe(res=>this.stockData.push(res));
   }
-  stock={
-    "id":"",
-    "stock_code":"",
-    "stock_name":""
-  }
-  companyList=this.comp;
-  stockList=this.stock;
- 
-  stock_det=[{
-    "id":"1",
-    "companyCode": "CNGA8745",
-    "companyName":"EFRON",
-    "stockCode":"1236",
-    "stockName":"IRON",
-    "stockPrice":"12367",
-    "validDate":"12/30/2025"
-  },{
-    "id":"1234",
-    "companyCode": "CNGA7298",
-    "companyName":"IRONY",
-    "stockCode":"764",
-    "stockName":"TEA",
-    "stockPrice":"687",
-    "validDate":"12/30/2025"
-  },{
-    "id":"1239",
-    "companyCode": "CNG87292",
-    "companyName":"IRONI",
-    "stockCode":"7623",
-    "stockName":"GOLD",
-    "stockPrice":"689",
-    "validDate":"12/30/2027"
-  }]
 
-  remove(data:any){
-
+  refreshStockObj(data:StockModal){
+    this.updateStockModal=data;
   }
-  stockData= this.stock_det;
-  stockSearchResult= [this.stock_det];
-  closeResult = '';
-  error: any;
-  modalcontent:any | undefined;
+  updateStock(){
+this.stockSer.updatestock(this.updateStockModal).subscribe(res=>this.stockSer.getStock().subscribe(res=>this.stockData=res));
+  }
+  confirm(data:any,obj:StockModal){
+    if(confirm("Are you sure to delete "+data)) {
+      this.stockSer.deleteStock(data).subscribe(res=>{
+        this.stockSer.getStock().subscribe((res)=>this.stockData=res)
+      });
+    }
+  }
+
 
 }

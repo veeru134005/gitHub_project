@@ -12,17 +12,19 @@ export class CompanyComponent implements OnInit {
   constructor(private service:CompanyserviceService) { }
 
   companyData:CompanyModal[];
+  stockExchange=["NSE","BSE"];
+  companyModal=new CompanyModal("","",0,"","",Math.floor( Math.random()),"Select");
 
-  companyModal=new CompanyModal("","",0,"","",Math.floor( Math.random()));
-
-  updateCompModal=new CompanyModal("","",0,"","",Math.floor( Math.random()));
+  updateCompModal=new CompanyModal("","",0,"","",Math.floor( Math.random()),"");
     
   ngOnInit(): void {
     this.service.getCompanies().subscribe((res)=>this.companyData=res);
   }
 
   addCompany(){
-    this.service.companyRegistration(this.companyModal).subscribe(res=>this.companyData.push(res));
+    this.service.companyRegistration(this.companyModal).subscribe(res=>{this.companyData.push(res);
+      this.companyModal=new CompanyModal("","",0,"","",Math.floor( Math.random()),"NSE");
+    });
   }
   confirm(data:any,obj:CompanyModal){
     if(confirm("Are you sure to delete "+data)) {

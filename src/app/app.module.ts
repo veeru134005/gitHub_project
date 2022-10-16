@@ -18,7 +18,7 @@ import{DashBoardService} from './Services/dashBoardService';
 import{ServiceUtils} from './Services/serviceUtils';
 import{CommonService} from './Services/services';
 import {CompanyserviceService} from './Services/companyservice.service'
-
+import {StockService} from './Services/stock.service'
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +38,7 @@ import {CompanyserviceService} from './Services/companyservice.service'
     FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [DashBoardService,ServiceUtils,CommonService,CompanyserviceService],
+  providers: [DashBoardService,ServiceUtils,CommonService,CompanyserviceService,StockService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

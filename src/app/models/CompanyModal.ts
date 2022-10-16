@@ -12,5 +12,5 @@ export class CompanyModal{
     company_website?:string;
 
     constructor(public companycode:string,public companyname:string,public companyturnover:number,public companyceo:string
-        ,public companywebsite:string,public id:number){}
+        ,public companywebsite:string,public id:number, stockExchangeNames:string){}
 }

@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.dashService.getCompanyStatistics().subscribe((res:any)=>{
       this.statistics=res;
-      console.log(JSON.stringify(res));
+      
     },err=>{
       console.log(err.message);
     });

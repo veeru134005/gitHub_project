@@ -15,7 +15,7 @@ export class DashBoardService{
      }
 
      getRecentStockDetails():Observable<any>{
-        return this.service.get("/getRecentStockDetails");
+        return this.service.get("/stock");
      }
 
 }
