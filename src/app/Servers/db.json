@@ -1,0 +1,45 @@
+{
+ "getStats": [{
+    "totalCompanies":40,
+    "minStockPrice":45,
+    "maxStockPrice":100,
+    "averageStockPrice":200
+}],
+  "getRecentStockDetails":[{
+    "id":"1",
+    "companyCode": "CNGA8745",
+    "companyName":"EFRON",
+    "stockCode":"1236",
+    "stockName":"IRON",
+    "stockPrice":"12367",
+    "validDate":"12/30/2025"
+  },{
+    "id":"1234",
+    "companyCode": "CNGA7298",
+    "companyName":"IRONY",
+    "stockCode":"764",
+    "stockName":"TEA",
+    "stockPrice":"687",
+    "validDate":"12/30/2025"
+  },{
+    "id":"1239",
+    "companyCode": "CNG87292",
+    "companyName":"IRONI",
+    "stockCode":"7623",
+    "stockName":"GOLD",
+    "stockPrice":"689",
+    "validDate":"12/30/2027"
+  }],
+
+  "company":[{"company_id": "4978",
+  "company_name": "silver",
+  "company_website":"yahoo",
+  "company_turnover":"4387",
+  "company_ceo":"math"
+},{"company_id": "4578",
+  "company_name": "gold",
+  "company_website":"google",
+  "company_turnover":"5698",
+  "company_ceo":"mathow"
+}]
+}

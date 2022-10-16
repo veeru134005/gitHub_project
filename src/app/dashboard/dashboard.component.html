@@ -13,13 +13,12 @@
 
   <body>
     <app-header></app-header>
-    <!-- <app-stockheader></app-stockheader> -->
     <div class="home-content">
-      <div class="overview-boxes">
+      <div class="overview-boxes" *ngFor="let sts of statistics">
         <div class="box">
           <div class="right-side">
             <div class="box-topic" style="font-size: 15px">Total Companies</div>
-            <div class="number">40</div>
+            <div class="number">{{ sts.totalCompanies }}</div>
             <div class="indicator">
               <i class="bx bx-up-arrow-alt"></i>
               <span class="text">Up from lastYear</span>
@@ -32,7 +31,7 @@
             <div class="box-topic" style="font-size: 15px">
               Minimum Stock Value
             </div>
-            <div class="number">$38</div>
+            <div class="number">$ {{ sts.minStockPrice }}</div>
             <div class="indicator">
               <i class="bx bx-up-arrow-alt"></i>
               <span class="text">Up from lastYear</span>
@@ -45,7 +44,7 @@
             <div class="box-topic" style="font-size: 15px">
               Maximum Stock Value
             </div>
-            <div class="number">$150</div>
+            <div class="number">${{ sts.maxStockPrice }}</div>
             <div class="indicator">
               <i class="bx bx-up-arrow-alt"></i>
               <span class="text">Up from lastYear</span>
@@ -58,7 +57,7 @@
             <div class="box-topic" style="font-size: 15px">
               Average Stock Value
             </div>
-            <div class="number">$96</div>
+            <div class="number">$ {{ sts.averageStockPrice }}</div>
             <div class="indicator">
               <i class="bx bx-up-arrow-alt"></i>
               <span class="text">Up From lastYear</span>
@@ -90,29 +89,29 @@
                       <th class="text-center">Stock Price</th>
                       <th class="text-center">Valid Date</th>
                     </tr>
-                    <tr *ngFor="let stock of stockData; let id = index">
+                    <tr *ngFor="let stock of recentStocks; let id = index">
                       <td>
-                        <span contenteditable="true">{{
+                        <span contenteditable="false">{{
                           stock.companyCode
                         }}</span>
                       </td>
                       <td>
-                        <span contenteditable="true">{{
+                        <span contenteditable="false">{{
                           stock.companyName
                         }}</span>
                       </td>
                       <td>
-                        <span contenteditable="true"
+                        <span contenteditable="false"
                           >{{ stock.stockCode }}/{{ stock.stockName }}</span
                         >
                       </td>
                       <td>
-                        <span contenteditable="true">{{
+                        <span contenteditable="false">{{
                           stock.stockPrice
                         }}</span>
                       </td>
                       <td>
-                        <span contenteditable="true">{{
+                        <span contenteditable="false">{{
                           stock.validDate
                         }}</span>
                       </td>

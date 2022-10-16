@@ -14,6 +14,10 @@ import { LoginComponent } from './login/login.component';
 import { StockComponent } from './stock/stock.component';
 import { CompanyComponent } from './company/company.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import{DashBoardService} from './Services/dashBoardService';
+import{ServiceUtils} from './Services/serviceUtils';
+import{CommonService} from './Services/services';
+import {CompanyserviceService} from './Services/companyservice.service'
 
 @NgModule({
   declarations: [
@@ -34,7 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [DashBoardService,ServiceUtils,CommonService,CompanyserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

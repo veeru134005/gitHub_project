@@ -27,53 +27,131 @@
           </tr>
           <tr *ngFor="let stock of stockData; let id = index">
             <td>
-              <span contenteditable="true">{{ stock.companyCode }}</span>
+              <span contenteditable="false">{{ stock.companyCode }}</span>
             </td>
             <td>
-              <span contenteditable="true">{{ stock.companyName }}</span>
+              <span contenteditable="false">{{ stock.companyName }}</span>
             </td>
             <td>
-              <span contenteditable="true"
+              <span contenteditable="false"
                 >{{ stock.stockCode }}/{{ stock.stockName }}</span
               >
             </td>
             <td>
-              <span contenteditable="true">{{ stock.stockPrice }}</span>
+              <span contenteditable="false">{{ stock.stockPrice }}</span>
             </td>
             <td>
-              <span contenteditable="true">{{ stock.validDate }}</span>
+              <span contenteditable="false">{{ stock.validDate }}</span>
             </td>
             <td>
-              <span class="table-remove">
-                <button
-                  type="button"
-                  mdbBtn
-                  color="danger"
-                  rounded="true"
-                  size="sm"
-                  class="btn btn-outline-primary"
-                  (click)="remove(stock.id)"
+              <button
+                class="btn btn-primary btn-sm"
+                style="margin: 3px"
+                data-toggle="modal"
+                data-target="#exampleModalLong"
+              >
+                <i class="fa fa-edit"></i> Edit
+              </button>
+              <button class="btn btn-primary btn-sm">
+                <i class="fa fa-trash"></i>
+                <a
+                  title="delete"
+                  class="btn-primary"
+                  onclick="return confirm('Are you sure you want to delete this item')"
+                  >Delete</a
                 >
-                  <i class="fa fa-trash" aria-hidden="true"></i>Delete
-                </button>
-              </span>
-              <span class="table-remove">
-                <button
-                  type="button"
-                  mdbBtn
-                  color="danger"
-                  rounded="true"
-                  size="sm"
-                  class="btn btn-outline-primary"
-                  (click)="remove(stock.id)"
-                >
-                  <i class="fa fa-trash" aria-hidden="true"></i>Edit
-                </button>
-              </span>
+              </button>
             </td>
           </tr>
         </table>
       </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModalLong"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLongTitle"
+  aria-hidden="false"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add New Company</h4>
+      </div>
+      <form #ngForm="ngForm">
+        <div class="container">
+          <div class="editableForm">
+            <label for="inputEmail" class="sr-only">Company Code</label
+            ><small>Company Code</small>
+
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Company Code"
+              required
+              autofocus
+            />
+          </div>
+          <div class="editableForm">
+            <label for="inputPassword" class="sr-only">Company Name</label
+            ><small>Company Name:</small>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Company Name"
+              required
+            />
+          </div>
+          <div class="editableForm">
+            <label for="inputPassword" class="sr-only">Company CEO</label
+            ><small>Company CEO:</small>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Company CEO"
+              required
+            />
+          </div>
+          <div class="editableForm">
+            <label for="inputPassword" class="sr-only">Company Turnover</label
+            ><small>Company Turnover:</small>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Company Turnover In Crore"
+              required
+            />
+          </div>
+          <div class="editableForm">
+            <label for="inputPassword" class="sr-only"
+              >Company Website Details</label
+            ><small>Company Website Details:</small>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Company Website Url"
+              required
+            />
+          </div>
+        </div>
+        <div class="modal-footer" style="flex-wrap: nowrap">
+          <button
+            type="button"
+            class="btn btn-secondary button_add"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+          <span> </span>
+          <button type="button" class="btn btn-primary button_add">
+            Save changes
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

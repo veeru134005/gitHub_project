@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashBoardService } from '../Services/dashBoardService';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,59 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
-  status={
-    "min":"",
-    "avg":"",
-    "max":""
-  }
-  ngOnInit(): void {
-  }
-  comp={
-    "id":"",
-    "company_id":"",
-    "company_name":""
-  }
-  stock={
-    "id":"",
-    "stock_code":"",
-    "stock_name":""
-  }
-  companyList=[this.comp];
-  stockList=[this.stock];
+  constructor(private dashService:DashBoardService) { }
+
+  statistics=[];
+  recentStocks= [];
  
-  stock_det=[{
-    "id":"1",
-    "companyCode": "CNGA8745",
-    "companyName":"EFRON",
-    "stockCode":"1236",
-    "stockName":"IRON",
-    "stockPrice":"12367",
-    "validDate":"12/30/2025"
-  },{
-    "id":"1234",
-    "companyCode": "CNGA7298",
-    "companyName":"IRONY",
-    "stockCode":"764",
-    "stockName":"TEA",
-    "stockPrice":"687",
-    "validDate":"12/30/2025"
-  },{
-    "id":"1239",
-    "companyCode": "CNG87292",
-    "companyName":"IRONI",
-    "stockCode":"7623",
-    "stockName":"GOLD",
-    "stockPrice":"689",
-    "validDate":"12/30/2027"
-  }]
+  ngOnInit(): void {
+    this.dashService.getCompanyStatistics().subscribe((res:any)=>{
+      this.statistics=res;
+      console.log(JSON.stringify(res));
+    },err=>{
+      console.log(err.message);
+    });
 
-
-
-  stockData= this.stock_det;
-  stockSearchResult= [this.stock_det];
-  closeResult = '';
-  error: any;
-  modalcontent:any | undefined;
-
+    this.dashService.getRecentStockDetails().subscribe(res=>this.recentStocks=res)
+  }
 }

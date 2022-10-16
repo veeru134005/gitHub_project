@@ -28,19 +28,21 @@
           </tr>
           <tr *ngFor="let comp of companyData; let id = index">
             <td>
-              <span contenteditable="true">{{ comp.company_id }}</span>
+              <span contenteditable="false">{{ comp.company_id }}</span>
             </td>
             <td>
-              <span contenteditable="true">{{ comp.company_name }}</span>
+              <span contenteditable="false">{{ comp.company_name }}</span>
             </td>
             <td>
-              <span contenteditable="true">{{ comp.company_ceo }}</span>
+              <span contenteditable="false">{{ comp.company_ceo }}</span>
             </td>
             <td>
-              <span contenteditable="true">{{ comp.company_turnover }}Cr.</span>
+              <span contenteditable="false"
+                >{{ comp.company_turnover }}Cr.</span
+              >
             </td>
             <td>
-              <span contenteditable="true">{{ comp.company_website }}</span>
+              <span contenteditable="false">{{ comp.company_website }}</span>
             </td>
             <td>
               <button
@@ -68,10 +70,6 @@
     </div>
   </div>
 </div>
-<ng-template #noCompanies>
-  <h5>There are no clients in the system.</h5>
-</ng-template>
-
 <!-- Button trigger modal -->
 
 <!-- Modal -->
@@ -81,18 +79,20 @@
   tabindex="-1"
   role="dialog"
   aria-labelledby="exampleModalLongTitle"
-  aria-hidden="true"
+  aria-hidden="false"
 >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Add New Company</h4>
       </div>
-      <form action="action_page.php" method="post">
+      <form #ngForm="ngForm">
+        {{ addCompany | json }}
         <div class="container">
           <div class="editableForm">
-            <label for="inputEmail" class="sr-only">Company Code</label>Company
-            Code:
+            <label for="inputEmail" class="sr-only">Company Code</label
+            ><small>Company Code</small>
+
             <input
               type="text"
               class="form-control"
@@ -103,7 +103,7 @@
           </div>
           <div class="editableForm">
             <label for="inputPassword" class="sr-only">Company Name</label
-            >Company Name:
+            ><small>Company Name:</small>
             <input
               type="text"
               class="form-control"
@@ -113,7 +113,7 @@
           </div>
           <div class="editableForm">
             <label for="inputPassword" class="sr-only">Company CEO</label
-            >Company CEO:
+            ><small>Company CEO:</small>
             <input
               type="text"
               class="form-control"
@@ -123,7 +123,7 @@
           </div>
           <div class="editableForm">
             <label for="inputPassword" class="sr-only">Company Turnover</label
-            >Company Turnover:
+            ><small>Company Turnover:</small>
             <input
               type="text"
               class="form-control"
@@ -134,7 +134,7 @@
           <div class="editableForm">
             <label for="inputPassword" class="sr-only"
               >Company Website Details</label
-            >Company Website Details:
+            ><small>Company Website Details:</small>
             <input
               type="text"
               class="form-control"
