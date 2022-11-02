@@ -13,7 +13,7 @@ export class CommonService{
     constructor(private http:HttpClient){
 
     }
-   url:string=environment.apiUrl;
+   url:string=environment.apiUrl1;
    
     get(uri:string):Observable<any>{
         return this.http.get(this.url+uri).pipe(catchError((err:HttpErrorResponse)=>{
@@ -28,7 +28,7 @@ export class CommonService{
     }
 
     delete(uri:string,data:any):Observable<any> {
-    return this.http.delete(this.url+uri+"/"+data);
+    return this.http.delete(this.url+uri);
     }
 
     put(uri: string, data: any):Observable<any> {

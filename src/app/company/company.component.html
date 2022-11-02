@@ -29,22 +29,24 @@
           </tr>
           <tr *ngFor="let comp of companyData; let id = index">
             <td>
-              <span contenteditable="false">{{ comp.companycode }}</span>
+              <span contenteditable="false">{{ comp.companyCode }}</span>
             </td>
             <td>
-              <span contenteditable="false">{{ comp.companyname }}</span>
+              <span contenteditable="false">{{ comp.companyName }}</span>
             </td>
             <td>
-              <span contenteditable="false">{{ comp.companyceo }}</span>
+              <span contenteditable="false">{{ comp.companyCeo }}</span>
             </td>
             <td>
-              <span contenteditable="false">{{ comp.companyturnover }}Cr.</span>
+              <span contenteditable="false">{{ comp.companyTurnover }}Cr.</span>
             </td>
             <td>
-              <span contenteditable="false">{{ comp.companywebsite }}</span>
+              <span contenteditable="false">{{ comp.companyWebsite }}</span>
             </td>
             <td>
-              <span contenteditable="false">{{ comp.stockExchangeNames }}</span>
+              <span contenteditable="false">{{
+                comp.companyStockExchange
+              }}</span>
             </td>
             <td>
               <button
@@ -62,7 +64,7 @@
                 <a
                   title="delete"
                   class="btn-primary"
-                  (click)="confirm(comp.id, comp)"
+                  (click)="confirm(comp.companyCode, comp)"
                   >Delete</a
                 >
               </button>
@@ -102,7 +104,7 @@
               required
               autofocus
               name="Company Code"
-              [(ngModel)]="companyModal.companycode"
+              [(ngModel)]="companyModal.companyCode"
             />
           </div>
           <div class="editableForm">
@@ -114,7 +116,7 @@
               placeholder="Company Name"
               required
               name="Company Name"
-              [(ngModel)]="companyModal.companyname"
+              [(ngModel)]="companyModal.companyName"
             />
           </div>
           <div class="editableForm">
@@ -126,7 +128,7 @@
               placeholder="Company CEO"
               required
               name="Company CEO"
-              [(ngModel)]="companyModal.companyceo"
+              [(ngModel)]="companyModal.companyCeo"
             />
           </div>
           <div class="editableForm">
@@ -138,7 +140,7 @@
               placeholder="Company Turnover In Crore"
               required
               name="Company Turnover In Crore"
-              [(ngModel)]="companyModal.companyturnover"
+              [(ngModel)]="companyModal.companyTurnover"
             />
           </div>
           <div class="editableForm">
@@ -150,7 +152,7 @@
               placeholder="Company Website Url"
               required
               name="companywebsite"
-              [(ngModel)]="companyModal.companywebsite"
+              [(ngModel)]="companyModal.companyWebsite"
             />
           </div>
           <div class="editableForm">
@@ -158,7 +160,7 @@
             <select
               class="form-control"
               name="stockExchangeNames"
-              [(ngModel)]="companyModal.stockExchangeNames"
+              [(ngModel)]="companyModal.companyStockExchange"
             >
               <option value="Select" selected disabled>Select</option>
               <option value="NSE">NSE</option>
@@ -221,7 +223,7 @@
               required
               autofocus
               name="Company Code"
-              [(ngModel)]="updateCompModal.companycode"
+              [(ngModel)]="updateCompModal.companyCode"
             />
           </div>
           <div class="editableForm">
@@ -233,7 +235,7 @@
               placeholder="Company Name"
               required
               name="Company Name"
-              [(ngModel)]="updateCompModal.companyname"
+              [(ngModel)]="updateCompModal.companyName"
             />
           </div>
           <div class="editableForm">
@@ -245,7 +247,7 @@
               placeholder="Company CEO"
               required
               name="Company CEO"
-              [(ngModel)]="updateCompModal.companyceo"
+              [(ngModel)]="updateCompModal.companyCeo"
             />
           </div>
           <div class="editableForm">
@@ -257,7 +259,7 @@
               placeholder="Company Turnover In Crore"
               required
               name="Company Turnover In Crore"
-              [(ngModel)]="updateCompModal.companyturnover"
+              [(ngModel)]="updateCompModal.companyTurnover"
             />
           </div>
           <div class="editableForm">
@@ -269,7 +271,7 @@
               placeholder="Company Website Url"
               required
               name="companywebsite"
-              [(ngModel)]="updateCompModal.companywebsite"
+              [(ngModel)]="updateCompModal.companyWebsite"
             />
           </div>
           <div class="editableForm">
@@ -277,7 +279,7 @@
             <select
               class="form-control"
               name="stockExchangeNames"
-              [(ngModel)]="updateCompModal.stockExchangeNames"
+              [(ngModel)]="updateCompModal.companyStockExchange"
             >
               <option value="select">Select</option>
               <option

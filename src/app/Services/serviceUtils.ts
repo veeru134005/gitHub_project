@@ -11,7 +11,7 @@ export class ServiceUtils{
     
     constructor(private http:HttpClient){}
 
-    url:string=environment.apiUrl;
+    url:string=environment.apiUrl1;
 
 
     get(uri:string):Observable<any>{

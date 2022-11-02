@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CompanyModal } from '../models/CompanyModal';
 import { StockModal } from '../models/StockModal';
+import { CompanyserviceService } from '../Services/companyservice.service';
 import { StockService } from '../Services/stock.service';
 
 @Component({
@@ -9,19 +11,29 @@ import { StockService } from '../Services/stock.service';
 })
 export class StockComponent implements OnInit {
 
-  constructor(private stockSer:StockService) { }
+  constructor(private stockSer:StockService,private companyservice:CompanyserviceService) { }
 
   stockData=[];
+  listOfCompanies=[];
 
-  addStockModal=new StockModal("","",0,"",0,Math.floor( Math.random()),new Date);
+  addStockModal=new StockModal("","",0,"",0,Math.floor( Math.random()),new Date,'');
 
-  updateStockModal=new StockModal("","",0,"",0,Math.floor( Math.random()),new Date);
+  updateStockModal=new StockModal("","",0,"",0,Math.floor( Math.random()),new Date,'');
 
   ngOnInit(): void {
     this.stockSer.getStock().subscribe(res=>this.stockData=res);
+    this.companyservice.getCompanies().subscribe((res)=>{
+      this.listOfCompanies=res
+      console.log(this.listOfCompanies);
+    });
+      
+    
   }
-  addStock(){
+  addStock(data:CompanyModal){
     this.addStockModal.setValidDate(new Date);
+    this.addStockModal.setCompanyCode(data.companyCode);
+    this.addStockModal.setCompanyName(data.companyName);
+    console.log(this.addStock);
     this.stockSer.stockRegistration(this.addStockModal).subscribe(res=>this.stockData.push(res));
   }
 

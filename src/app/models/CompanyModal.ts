@@ -1,16 +1,16 @@
 export class CompanyModal{
    
     company_id?: number;
-    company_name?: string;
+    companyName?: string;
     code?: string;
     company_turnover?: string;
     company_ceo?: string;
     boardOfDirectors?: string;
-    stockExchangeNames?: string;
+    companyStockExchange?: string;
     sectorName?: string;
     description?: string;
     company_website?:string;
 
-    constructor(public companycode:string,public companyname:string,public companyturnover:number,public companyceo:string
-        ,public companywebsite:string,public id:number, stockExchangeNames:string){}
+    constructor(public companyCode:string, companyName:string,public companyTurnover:number,public companyCeo:string
+        ,public companyWebsite:string, companyStockExchange:string){}
 }

@@ -43,13 +43,23 @@
       "stockPrice": "254",
       "id": "aOZDuEZ",
       "validDate": "2022-10-16T21:03:39.495Z"
+    },
+    {
+      "companyCode": "",
+      "companyName": "",
+      "stockCode": 0,
+      "stockName": "Silver",
+      "stockPrice": "250",
+      "id": "2IIv_ba",
+      "companycode": "silver",
+      "validDate": "2022-10-25T08:10:03.736Z"
     }
   ],
   "company": [
     {
       "id": "3525",
       "companycode": "9585",
-      "companyname": "silver",
+      "companyName": "silver",
       "companywebsite": "yahoo",
       "companyturnover": "4387",
       "companyceo": "math",
@@ -58,7 +68,7 @@
     {
       "id": "25452",
       "companycode": "3526",
-      "companyname": "silver",
+      "companyName": "silver",
       "companywebsite": "yahoo",
       "companyturnover": "4387",
       "companyceo": "math",
@@ -67,7 +77,7 @@
     {
       "id": "1239",
       "companycode": "5858",
-      "companyname": "silver",
+      "companyName": "silver",
       "companywebsite": "yahoo",
       "companyturnover": "4387",
       "companyceo": "math",
@@ -75,7 +85,7 @@
     },
     {
       "companycode": "Veera",
-      "companyname": "25452",
+      "companyName": "25452",
       "companyturnover": "85000",
       "companyceo": "hyder",
       "companywebsite": "hdhd.wwea",
@@ -84,7 +94,7 @@
     },
     {
       "companycode": "0000",
-      "companyname": "hhhh",
+      "companyName": "hhhh",
       "companyturnover": "52",
       "companyceo": "hhh",
       "companywebsite": "yyytytytyty.com",
@@ -93,7 +103,7 @@
     },
     {
       "companycode": "Cnga2545",
-      "companyname": "hdydara",
+      "companyName": "hdydara",
       "companyturnover": "3652",
       "companyceo": "hydeai",
       "companywebsite": "www.goo.com",
@@ -102,7 +112,7 @@
     },
     {
       "companycode": "Hyderabad",
-      "companyname": "hyderabd",
+      "companyName": "hyderabd",
       "companyturnover": "2485",
       "companyceo": "hyderaba",
       "companywebsite": "hdhdhh",
@@ -111,7 +121,7 @@
     },
     {
       "companycode": "hydera",
-      "companyname": "hyder",
+      "companyName": "hyder",
       "companyturnover": "254",
       "companyceo": "yd",
       "companywebsite": "hyg/cgch",
@@ -120,7 +130,7 @@
     },
     {
       "companycode": "hyd",
-      "companyname": "hy",
+      "companyName": "hy",
       "companyturnover": "525",
       "companyceo": "hy",
       "companywebsite": "hhkh",
