@@ -57,7 +57,7 @@
             <div class="box-topic" style="font-size: 15px">
               Average Stock Value
             </div>
-            <div class="number">$ {{ sts.averageStockPrice }}</div>
+            <div class="number">$ {{ sts.avgStockPrice }}</div>
             <div class="indicator">
               <i class="bx bx-up-arrow-alt"></i>
               <span class="text">Up From lastYear</span>
@@ -106,9 +106,9 @@
                         }}</span>
                       </td>
                       <td>
-                        <span contenteditable="false"
-                          >{{ stock.stockCode }}/{{ stock.stockName }}</span
-                        >
+                        <span contenteditable="false">{{
+                          stock.stockName
+                        }}</span>
                       </td>
                       <td>
                         <span contenteditable="false">{{

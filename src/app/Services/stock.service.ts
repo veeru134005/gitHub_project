@@ -8,20 +8,20 @@ import {StockModal} from '../models/StockModal'
 export class StockService {
   constructor(private service:CommonService) { }
  
-  deleteStock(data: any) {
-    return this.service.delete('/stock',data);
+  deleteStock(data: StockModal) {
+    return this.service.delete('stock/delete/'+data.stockId);
    }
  
    getStock(){
-     return this.service.get('/stock');
+     return this.service.get('stock/getAll');
    }
  
    stockRegistration(data:any){
-     return this.service.post('/stock',data);
+     return this.service.post('stock/stockRegister',data);
    }
  
    updatestock(data: StockModal) {
-    return this.service.put('/stock/'+data.id,data);
+    return this.service.put('stock/updateStock',data);
    }
 
 }

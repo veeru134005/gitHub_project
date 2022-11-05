@@ -8,7 +8,7 @@ import { CommonService } from './services';
 export class CompanyserviceService {
 
   deeteCompany(data: CompanyModal) {
-   return this.service.delete('company/'+data.companyCode,data);
+   return this.service.delete('company/'+data.companyCode);
   }
 
   constructor(private service:CommonService) { }

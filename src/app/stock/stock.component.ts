@@ -13,42 +13,52 @@ export class StockComponent implements OnInit {
 
   constructor(private stockSer:StockService,private companyservice:CompanyserviceService) { }
 
-  stockData=[];
-  listOfCompanies=[];
+  stockData:Array<StockModal>=[];
+  listOfCompanies:Array<CompanyModal>=[];
 
-  addStockModal=new StockModal("","",0,"",0,Math.floor( Math.random()),new Date,'');
+  addStockModal=new StockModal("","",0,"",0,Math.floor( Math.random()),new Date);
 
-  updateStockModal=new StockModal("","",0,"",0,Math.floor( Math.random()),new Date,'');
+  updateStockModal=new StockModal("","",0,"",0,Math.floor( Math.random()),new Date);
 
   ngOnInit(): void {
-    this.stockSer.getStock().subscribe(res=>this.stockData=res);
+
     this.companyservice.getCompanies().subscribe((res)=>{
-      this.listOfCompanies=res
-      console.log(this.listOfCompanies);
-    });
-      
-    
+      this.listOfCompanies=res;
+      this.stockSer.getStock().subscribe(res=>{this.stockData=res;
+        this.refreshUpdateStn();
+      });});
   }
-  addStock(data:CompanyModal){
-    this.addStockModal.setValidDate(new Date);
+
+  addStock(data:StockModal){
+    this.addStockModal.setStockDate(new Date);
     this.addStockModal.setCompanyCode(data.companyCode);
-    this.addStockModal.setCompanyName(data.companyName);
-    console.log(this.addStock);
-    this.stockSer.stockRegistration(this.addStockModal).subscribe(res=>this.stockData.push(res));
+    this.stockSer.stockRegistration(this.addStockModal).subscribe(res=>{this.stockData.push(res)
+      this.refreshUpdateStn();
+    });
   }
 
   refreshStockObj(data:StockModal){
     this.updateStockModal=data;
   }
   updateStock(){
-this.stockSer.updatestock(this.updateStockModal).subscribe(res=>this.stockSer.getStock().subscribe(res=>this.stockData=res));
+    console.log("haiii")
+this.stockSer.updatestock(this.updateStockModal).subscribe(res=>this.stockSer.getStock().subscribe(res=>{this.stockData=res;
+  this.refreshUpdateStn();
+}));
   }
-  confirm(data:any,obj:StockModal){
-    if(confirm("Are you sure to delete "+data)) {
-      this.stockSer.deleteStock(data).subscribe(res=>{
-        this.stockSer.getStock().subscribe((res)=>this.stockData=res)
+  deleteStock(data:any,obj:StockModal){
+    if(confirm("Are you sure want to delete stock "+data)) {
+         this.stockSer.deleteStock(obj).subscribe(res=>{
+        this.stockSer.getStock().subscribe((res)=>{this.stockData=res
+          this.refreshUpdateStn();
+        });
+       
       });
     }
+  }
+
+  refreshUpdateStn(){
+    this.stockData.map(st=>st.companyName=(this.listOfCompanies.filter(l=>l.companyCode==st.companyCode).map(m=>m.companyName)[0]))
   }
 
 

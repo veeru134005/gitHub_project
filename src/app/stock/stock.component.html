@@ -18,24 +18,22 @@
           class="table table-bordered table-responsive-md table-striped text-center"
         >
           <tr>
-            <th class="text-center">Comapny Code</th>
+            <!-- <th class="text-center">Comapny Code</th> -->
             <th class="text-center">Company Name</th>
-            <th class="text-center">Stock Code/Name</th>
+            <th class="text-center">Stock Name</th>
             <th class="text-center">Stock Price</th>
             <th class="text-center">Valid Date</th>
             <th class="text-center">Action</th>
           </tr>
           <tr *ngFor="let stock of stockData; let id = index">
-            <td>
+            <!-- <td>
               <span contenteditable="false">{{ stock.companyCode }}</span>
-            </td>
+            </td> -->
             <td>
               <span contenteditable="false">{{ stock.companyName }}</span>
             </td>
             <td>
-              <span contenteditable="false"
-                >{{ stock.stockCode }}/{{ stock.stockName }}</span
-              >
+              <span contenteditable="false">{{ stock.stockName }}</span>
             </td>
             <td>
               <span contenteditable="false">{{ stock.stockPrice }}</span>
@@ -58,7 +56,7 @@
                 <a
                   title="delete"
                   class="btn-primary"
-                  (click)="confirm(stock.id, stock)"
+                  (click)="deleteStock(stock.stockName, stock)"
                   >Delete</a
                 >
               </button>
@@ -90,10 +88,13 @@
             <select
               class="form-control"
               name="stockExchangeNames"
-              [(ngModel)]="addStockModal.companycode"
+              [(ngModel)]="addStockModal.companyCode"
             >
               <option value="select">Select</option>
-              <option *ngFor="let comp of listOfCompanies">
+              <option
+                *ngFor="let comp of listOfCompanies"
+                [value]="comp.companyCode"
+              >
                 {{ comp.companyName }}
               </option>
             </select>
@@ -136,6 +137,7 @@
             type="button"
             class="btn btn-primary button_add"
             data-dismiss="modal"
+            (click)="addStock(addStockModal)"
           >
             Add Stock
           </button>

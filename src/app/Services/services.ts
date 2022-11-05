@@ -27,7 +27,7 @@ export class CommonService{
         }));
     }
 
-    delete(uri:string,data:any):Observable<any> {
+    delete(uri:string):Observable<any> {
     return this.http.delete(this.url+uri);
     }
 

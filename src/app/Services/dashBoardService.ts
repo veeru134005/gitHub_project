@@ -11,11 +11,11 @@ export class DashBoardService{
 
 
      getCompanyStatistics():Observable<any>{
-        return this.service.get("/getStats");
+        return this.service.get("stock/getStatics");
      }
 
      getRecentStockDetails():Observable<any>{
-        return this.service.get("/stock");
+        return this.service.get("stock/getAll");
      }
 
 }
