@@ -12,9 +12,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onSubmit() {
+  message;
+  onSubmit(userName:any,password:any) {
     console.log("submit working fine");
+    if((userName=="veera" || userName=="veera@gmail.com") && password=="8500")
     this.router.navigate(['/','dashboard']);
+    else{
+      this.message="Invalide userName Or Password";
+    this.router.navigate(['/','login']);
+    }
     //this.isLoading = true;
     //this.authService.login(this.username, this.password);
   }

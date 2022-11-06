@@ -78,7 +78,7 @@
 }
 
 .form_con .input-box input:focus + label,
-.form_con .input-box input:valid + label{
+.form_con .input-box input:valid + label,.form_con .input-box input:invalid+label{
     top: -25px;
     left: 0;
     color: #fff;
