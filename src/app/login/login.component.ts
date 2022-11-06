@@ -14,8 +14,12 @@ export class LoginComponent implements OnInit {
   }
   message;
   onSubmit(userName:any,password:any) {
-    console.log("submit working fine");
-    if((userName=="veera" || userName=="veera@gmail.com") && password=="8500")
+    console.log("submit working fine"+userName +">>>"+password);
+
+    if(userName==undefined || password==undefined || userName=='' || password==''){
+      this.message="Please Enter user Details";
+    }
+    else if((userName=="veera" || userName=="veera@gmail.com") && password=="8500")
     this.router.navigate(['/','dashboard']);
     else{
       this.message="Invalide userName Or Password";
