@@ -12,6 +12,10 @@ export class StockService {
     return this.service.delete('stock/delete/'+data.stockId);
    }
  
+   deleteByComapnayCode(companyCode: any) {
+    return this.service.delete('stock/deleteByCompanyCode/'+companyCode);
+   }
+
    getStock(){
      return this.service.get('stock/getAll');
    }

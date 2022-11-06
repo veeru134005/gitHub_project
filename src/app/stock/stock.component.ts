@@ -16,9 +16,9 @@ export class StockComponent implements OnInit {
   stockData:Array<StockModal>=[];
   listOfCompanies:Array<CompanyModal>=[];
 
-  addStockModal=new StockModal("","",0,"",0,Math.floor( Math.random()),new Date);
+  addStockModal=new StockModal("","",0,"",0,Math.floor( Math.random()),new Date,new Date,new Date);
 
-  updateStockModal=new StockModal("","",0,"",0,Math.floor( Math.random()),new Date);
+  updateStockModal=new StockModal("","",0,"",0,Math.floor( Math.random()),new Date,new Date,new Date);
 
   ngOnInit(): void {
 
@@ -59,6 +59,7 @@ this.stockSer.updatestock(this.updateStockModal).subscribe(res=>this.stockSer.ge
 
   refreshUpdateStn(){
     this.stockData.map(st=>st.companyName=(this.listOfCompanies.filter(l=>l.companyCode==st.companyCode).map(m=>m.companyName)[0]))
+  console.log(this.stockData);
   }
 
 

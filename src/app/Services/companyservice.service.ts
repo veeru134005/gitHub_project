@@ -23,6 +23,6 @@ export class CompanyserviceService {
   }
 
   updateCompany(data: CompanyModal) {
-   return this.service.put('company/'+data.companyCode,data);
+   return this.service.put('company/update',data);
   }
 }

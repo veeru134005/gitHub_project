@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyModal } from '../models/CompanyModal';
 import { CompanyserviceService } from '../Services/companyservice.service';
+import { StockService } from '../Services/stock.service';
 
 @Component({
   selector: 'app-company',
@@ -9,13 +10,13 @@ import { CompanyserviceService } from '../Services/companyservice.service';
 })
 export class CompanyComponent implements OnInit {
 
-  constructor(private service:CompanyserviceService) { }
+  constructor(private stockSer:StockService,private service:CompanyserviceService) { }
 
   companyData:CompanyModal[];
   stockExchange=["NSE","BSE"];
-  companyModal=new CompanyModal("","",0,"","","Select");
+  companyModal=new CompanyModal("","",0,"","","Select",0);
 
-  updateCompModal=new CompanyModal("","",0,"","","");
+  updateCompModal=new CompanyModal("","",0,"","","",0);
     
   ngOnInit(): void {
     this.service.getCompanies().subscribe((res)=>this.companyData=res);
@@ -24,7 +25,7 @@ export class CompanyComponent implements OnInit {
   addCompany(){
     console.log(this.companyModal);
     this.service.companyRegistration(this.companyModal).subscribe(res=>{this.companyData.push(res);
-      this.companyModal=new CompanyModal("","",0,"","","NSE");
+      this.companyModal=new CompanyModal("","",0,"","","NSE",0);
     });
   }
   confirm(data:any,obj:CompanyModal){
@@ -39,6 +40,7 @@ export class CompanyComponent implements OnInit {
     this.updateCompModal=data;
   }
   updateCompany(){
+    console.log(this.updateCompModal)
        this.service.updateCompany(this.updateCompModal).subscribe(res=>{
         this.service.getCompanies().subscribe((res)=>this.companyData=res)
       })

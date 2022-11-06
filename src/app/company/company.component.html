@@ -91,7 +91,7 @@
       <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Add New Company</h4>
       </div>
-      <form (ngSubmit)="addCompany()" #ngForm="ngForm">
+      <form (ngSubmit)="addCompany()" #registerForm="ngForm">
         <div class="container">
           <div class="editableForm">
             <label for="inputEmail" class="sr-only">Company Code</label
@@ -103,9 +103,20 @@
               placeholder="Company Code"
               required
               autofocus
-              name="Company Code"
+              name="CompanyCode"
               [(ngModel)]="companyModal.companyCode"
+              onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+              #companyCode="ngModel"
             />
+            <small
+              class="text-danger"
+              *ngIf="
+                (companyCode.touched || registerForm.submitted) &&
+                companyCode.errors?.required
+              "
+            >
+              CompanyCode is mandory *
+            </small>
           </div>
           <div class="editableForm">
             <label class="sr-only">Company Name</label
@@ -117,7 +128,17 @@
               required
               name="Company Name"
               [(ngModel)]="companyModal.companyName"
+              #name="ngModel"
             />
+            <small
+              class="text-danger"
+              *ngIf="
+                (name.touched || registerForm.submitted) &&
+                name.errors?.required
+              "
+            >
+              Company Name is Required
+            </small>
           </div>
           <div class="editableForm">
             <label class="sr-only">Company CEO</label
@@ -129,11 +150,20 @@
               required
               name="Company CEO"
               [(ngModel)]="companyModal.companyCeo"
+              #ceo="ngModel"
             />
+            <small
+              class="text-danger"
+              *ngIf="
+                (ceo.touched || registerForm.submitted) && ceo.errors?.required
+              "
+            >
+              CompanyCeo Name is Required
+            </small>
           </div>
           <div class="editableForm">
-            <label class="sr-only">Company Turnover</label
-            ><small>Company Turnover:</small>
+            <label class="sr-only">Company Turnover In Cr.</label
+            ><small>Company Turnover In Cr.:</small>
             <input
               type="text"
               class="form-control"
@@ -141,7 +171,21 @@
               required
               name="Company Turnover In Crore"
               [(ngModel)]="companyModal.companyTurnover"
+              onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+              #turnOver="ngModel"
+              minlength="2"
             />
+            <small
+              class="text-danger"
+              *ngIf="
+                (turnOver.touched ||
+                  registerForm.submitted ||
+                  turnOver.error?.min) &&
+                turnOver.errors?.required
+              "
+            >
+              Company turn Over must be 10 Cr.
+            </small>
           </div>
           <div class="editableForm">
             <label class="sr-only">Company Website Details</label
@@ -153,7 +197,17 @@
               required
               name="companywebsite"
               [(ngModel)]="companyModal.companyWebsite"
+              #webSite="ngModel"
             />
+            <small
+              class="text-danger"
+              *ngIf="
+                (webSite.touched || registerForm.submitted) &&
+                webSite.errors?.required
+              "
+            >
+              Company web Site is mandatory *
+            </small>
           </div>
           <div class="editableForm">
             <small>Select Stock Exchage:</small>
@@ -161,6 +215,7 @@
               class="form-control"
               name="stockExchangeNames"
               [(ngModel)]="companyModal.companyStockExchange"
+              required
             >
               <option value="Select" selected disabled>Select</option>
               <option value="NSE">NSE</option>
@@ -185,6 +240,7 @@
             class="btn btn-primary button_add"
             data-dismiss="modal"
             (click)="addCompany()"
+            [disabled]="!registerForm.valid"
           >
             Rigister
           </button>
@@ -224,6 +280,7 @@
               autofocus
               name="Company Code"
               [(ngModel)]="updateCompModal.companyCode"
+              disabled
             />
           </div>
           <div class="editableForm">
@@ -236,7 +293,17 @@
               required
               name="Company Name"
               [(ngModel)]="updateCompModal.companyName"
+              #companyName="ngModel"
             />
+            <small
+              class="text-danger"
+              *ngIf="
+                (companyName.touched || registerForm.submitted) &&
+                companyName.errors?.required
+              "
+            >
+              companyName is mandory *
+            </small>
           </div>
           <div class="editableForm">
             <label class="sr-only">Company CEO</label
@@ -248,7 +315,16 @@
               required
               name="Company CEO"
               [(ngModel)]="updateCompModal.companyCeo"
+              #ceo="ngModel"
             />
+            <small
+              class="text-danger"
+              *ngIf="
+                (ceo.touched || registerForm.submitted) && ceo.errors?.required
+              "
+            >
+              company Ceo Name is mandory *
+            </small>
           </div>
           <div class="editableForm">
             <label class="sr-only">Company Turnover</label
@@ -272,7 +348,17 @@
               required
               name="companywebsite"
               [(ngModel)]="updateCompModal.companyWebsite"
+              #webSite="ngModel"
             />
+            <small
+              class="text-danger"
+              *ngIf="
+                (webSite.touched || registerForm.submitted) &&
+                webSite.errors?.required
+              "
+            >
+              company webSite is mandory *
+            </small>
           </div>
           <div class="editableForm">
             <small>Select Stock Exchage:</small>

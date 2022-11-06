@@ -22,7 +22,8 @@
             <th class="text-center">Company Name</th>
             <th class="text-center">Stock Name</th>
             <th class="text-center">Stock Price</th>
-            <th class="text-center">Valid Date</th>
+            <th class="text-center">Start Date</th>
+            <th class="text-center">End Date</th>
             <th class="text-center">Action</th>
           </tr>
           <tr *ngFor="let stock of stockData; let id = index">
@@ -39,7 +40,14 @@
               <span contenteditable="false">{{ stock.stockPrice }}</span>
             </td>
             <td>
-              <span contenteditable="false">{{ stock.validDate }}</span>
+              <span contenteditable="false">{{
+                stock.stockStartDate | date: "MM/dd/yyyy"
+              }}</span>
+            </td>
+            <td>
+              <span contenteditable="false">{{
+                stock.stockEndDate | date: "MM/dd/yyyy"
+              }}</span>
             </td>
             <td>
               <button
@@ -81,7 +89,7 @@
       <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Add New Stock</h4>
       </div>
-      <form>
+      <form #stockForm="ngForm">
         <div class="container">
           <div class="editableForm">
             <small>Select Company :</small>
@@ -109,7 +117,17 @@
               name="stockName"
               [(ngModel)]="addStockModal.stockName"
               required
+              #stockName="ngModel"
             />
+            <small
+              class="text-danger"
+              *ngIf="
+                (stockName.touched || stockForm.submitted) &&
+                stockName.errors?.required
+              "
+            >
+              StockName is mandory *
+            </small>
           </div>
           <div class="editableForm">
             <label class="sr-only">Stock Price</label
@@ -121,9 +139,45 @@
               name="stockPrice"
               [(ngModel)]="addStockModal.stockPrice"
               required
+              #stockPrice="ngModel"
+              onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+            />
+            <small
+              class="text-danger"
+              *ngIf="
+                (stockPrice.touched || stockForm.submitted) &&
+                stockPrice.errors?.required
+              "
+            >
+              StockPrice is mandory *
+            </small>
+          </div>
+
+          <div class="editableForm">
+            <label class="sr-only">Start Date</label>
+            <small>Start Date:</small>
+            <input
+              type="date"
+              id="startDate"
+              name="startDate"
+              class="form-control"
+              [(ngModel)]="addStockModal.stockStartDate"
+            />
+          </div>
+
+          <div class="editableForm">
+            <label class="sr-only">End Date</label>
+            <small>End Date:</small>
+            <input
+              type="date"
+              id="endDate"
+              name="endDate"
+              class="form-control"
+              [(ngModel)]="addStockModal.stockEndDate"
             />
           </div>
         </div>
+
         <div class="modal-footer" style="flex-wrap: nowrap">
           <button
             type="button"
@@ -138,6 +192,7 @@
             class="btn btn-primary button_add"
             data-dismiss="modal"
             (click)="addStock(addStockModal)"
+            [disabled]="!stockForm.valid"
           >
             Add Stock
           </button>
@@ -161,7 +216,7 @@
       <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Update Stock</h4>
       </div>
-      <form #ngForm="ngForm">
+      <form #registerForm="ngForm">
         <div class="container">
           <div class="editableForm">
             <label for="inputEmail" class="sr-only">Company Code</label
@@ -211,6 +266,29 @@
               required
             />
           </div>
+          <div class="editableForm">
+            <label class="sr-only">Start Date</label>
+            <small>Start Date:</small>
+            <input
+              type="date"
+              id="startDate"
+              name="startDate"
+              class="form-control"
+              [(ngModel)]="updateStockModal.stockStartDate"
+            />
+          </div>
+
+          <div class="editableForm">
+            <label class="sr-only">End Date</label>
+            <small>End Date:</small>
+            <input
+              type="date"
+              id="endDate"
+              name="endDate"
+              class="form-control"
+              [(ngModel)]="updateStockModal.stockEndDate"
+            />
+          </div>
         </div>
         <div class="modal-footer" style="flex-wrap: nowrap">
           <button
@@ -226,6 +304,7 @@
             class="btn btn-primary button_add"
             data-dismiss="modal"
             (click)="updateStock()"
+            [disabled]="!registerForm.valid"
           >
             Update Stock
           </button>

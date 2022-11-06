@@ -87,7 +87,8 @@
                       <th class="text-center">Company Name</th>
                       <th class="text-center">Stock Code/Name</th>
                       <th class="text-center">Stock Price</th>
-                      <th class="text-center">Valid Date</th>
+                      <th class="text-center">Start Date</th>
+                      <th class="text-center">End Date</th>
                     </tr>
                     <tr
                       *ngFor="
@@ -117,7 +118,12 @@
                       </td>
                       <td>
                         <span contenteditable="false">{{
-                          stock.validDate
+                          stock.stockStartDate | date: "MM/dd/yyyy"
+                        }}</span>
+                      </td>
+                      <td>
+                        <span contenteditable="false">{{
+                          stock.stockEndDate | date: "MM/dd/yyyy"
                         }}</span>
                       </td>
                     </tr>
