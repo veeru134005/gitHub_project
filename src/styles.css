@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+.nodata{
+    text-align: center;
+    color: blue;
+    background: gainsboro;
+    margin: 0px 16px 0px 16px;
+}

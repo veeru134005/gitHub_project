@@ -25,11 +25,12 @@ export class CompanyComponent implements OnInit {
   addCompany(){
     console.log(this.companyModal);
     this.service.companyRegistration(this.companyModal).subscribe(res=>{this.companyData.push(res);
-      this.companyModal=new CompanyModal("","",0,"","","NSE",0);
+      this.companyModal=new CompanyModal("","",0,"","","",0);
     });
   }
   confirm(data:any,obj:CompanyModal){
     if(confirm("Are you sure to delete "+data)) {
+      console.log(typeof parseInt(obj.companyCode));
       this.service.deeteCompany(obj).subscribe(res1=>{
         this.service.getCompanies().subscribe((res)=>this.companyData=res)
       });
