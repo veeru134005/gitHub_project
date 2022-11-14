@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   message;
   onSubmit(userName:any,password:any) {
     console.log("submit working fine"+userName +">>>"+password);
-
+    this.router.navigate(['/','dashboard']);
     if(userName==undefined || password==undefined || userName=='' || password==''){
       this.message="Please Enter user Details";
     }
