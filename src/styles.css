@@ -5,3 +5,42 @@
     background: gainsboro;
     margin: 0px 16px 0px 16px;
 }
+
+.erroMsg{
+    font-size: 17px;
+    margin: -36px 413px;
+    color: red;
+}
+.searchBox {
+    margin-left: 65%;
+}
+.searchBtn{
+  
+color: #0a100c;
+font-style: oblique;
+}
+.stockSearch{
+margin-left: 420px;
+}
+.serachDate {
+    font-size: 73%;
+    font-weight: 400;
+    margin-right: 8px;
+    color: #04c;
+    font-style: italic;
+}
+
+.spinner{
+    position: absolute;
+    margin: -36px 500px;
+    width: 100px;
+    height: 96%;
+}
+
+.searchBystockData{
+    width: 137px;
+    height: 35px;
+    padding-bottom: 6px;
+    border-color: #007bff;
+}
+

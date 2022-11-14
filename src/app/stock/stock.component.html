@@ -5,15 +5,39 @@
       Stock Details
     </h3>
     <div class="card-body">
+      <div
+        *ngIf="isLoaderRequired"
+        class="p-5 d-flex flex-column justify-content-center spinner align-items-center"
+      >
+        <div class="spinner-border text-success" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="small pt-2 text-success">Loading…</div>
+      </div>
+      <div>
+        <div style="width: 20%; float: left">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#addStockModal"
+          >
+            Add Stock
+          </button>
+        </div>
+        <div style="width: 36%; float: right">
+          <input type="date" class="btn btn-outline-primary" #startDate />
+          <input type="date" class="btn btn-outline-primary" #endDate />
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            (click)="searchByDates(startDate.value, endDate.value)"
+          >
+            search
+          </button>
+        </div>
+      </div>
       <div id="table" class="table-editable">
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-toggle="modal"
-          data-target="#addStockModal"
-        >
-          Add Stock
-        </button>
         <table
           class="table table-bordered table-responsive-md table-striped text-center"
         >
@@ -76,6 +100,10 @@
   </div>
 </div>
 
+<div *ngIf="!stockData?.length" class="nodata">
+  <h5>No-Data Found</h5>
+</div>
+
 <div
   class="modal fade"
   id="addStockModal"
@@ -98,7 +126,7 @@
               name="stockExchangeNames"
               [(ngModel)]="addStockModal.companyCode"
             >
-              <option value="select">Select</option>
+              <option selected disabled>Select</option>
               <option
                 *ngFor="let comp of listOfCompanies"
                 [value]="comp.companyCode"

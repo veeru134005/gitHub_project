@@ -16,24 +16,31 @@ export class StockComponent implements OnInit {
   stockData:Array<StockModal>=[];
   listOfCompanies:Array<CompanyModal>=[];
 
-  addStockModal=new StockModal("","",0,"",0,Math.floor( Math.random()),new Date,new Date,new Date);
+  addStockModal=new StockModal("Select","",0,"",0,Math.floor( Math.random()),new Date,new Date,new Date);
 
   updateStockModal=new StockModal("","",0,"",0,Math.floor( Math.random()),new Date,new Date,new Date);
-
+  isLoaderRequired=true;
   ngOnInit(): void {
 
     this.companyservice.getCompanies().subscribe((res)=>{
       this.listOfCompanies=res;
       this.stockSer.getStock().subscribe(res=>{this.stockData=res;
         this.refreshUpdateStn();
-      });});
+      });
+    this.isLoaderRequired=false;
+    });
+    
   }
 
   addStock(data:StockModal){
+    this.isLoaderRequired=true;
     this.addStockModal.setStockDate(new Date);
     this.addStockModal.setCompanyCode(data.companyCode);
     this.stockSer.stockRegistration(this.addStockModal).subscribe(res=>{this.stockData.push(res)
       this.refreshUpdateStn();
+      this.addStockModal=new StockModal("Select","",0,"",0,Math.floor( Math.random()),new Date,new Date,new Date);
+
+      this.isLoaderRequired=false;
     });
   }
 
@@ -41,16 +48,17 @@ export class StockComponent implements OnInit {
     this.updateStockModal=data;
   }
   updateStock(){
-    console.log("haiii")
-this.stockSer.updatestock(this.updateStockModal).subscribe(res=>this.stockSer.getStock().subscribe(res=>{this.stockData=res;
+  this.stockSer.updatestock(this.updateStockModal).subscribe(res=>this.stockSer.getStock().subscribe(res=>{this.stockData=res;
   this.refreshUpdateStn();
 }));
   }
   deleteStock(data:any,obj:StockModal){
     if(confirm("Are you sure want to delete stock "+data)) {
+      this.isLoaderRequired=true;
          this.stockSer.deleteStock(obj).subscribe(res=>{
         this.stockSer.getStock().subscribe((res)=>{this.stockData=res
           this.refreshUpdateStn();
+          this.isLoaderRequired=false;
         });
        
       });
@@ -59,8 +67,17 @@ this.stockSer.updatestock(this.updateStockModal).subscribe(res=>this.stockSer.ge
 
   refreshUpdateStn(){
     this.stockData.map(st=>st.companyName=(this.listOfCompanies.filter(l=>l.companyCode==st.companyCode).map(m=>m.companyName)[0]))
-  console.log(this.stockData);
-  }
+    }
 
+    searchByDates(startDate:string,endDate:string){
+      this.isLoaderRequired=true;
+      
+      this.stockSer.serachByStockData(startDate,endDate).subscribe(res=>{
+        this.stockData=res;
+        this.refreshUpdateStn();
+        this.isLoaderRequired=false;
+      });
+      
+    }
 
 }

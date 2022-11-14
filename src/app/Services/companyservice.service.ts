@@ -25,4 +25,8 @@ export class CompanyserviceService {
   updateCompany(data: CompanyModal) {
    return this.service.put('company/update',data);
   }
+
+  searchByCompNameCode(companyCode:number,companyName:string){
+    return this.service.get('company'+'/'+companyCode+'/'+companyName);
+  }
 }

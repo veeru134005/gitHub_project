@@ -28,4 +28,8 @@ export class StockService {
     return this.service.put('stock/updateStock',data);
    }
 
+   serachByStockData(startDate:String,endDate:String){
+    return this.service.get('stock/'+startDate+'/'+endDate);
+   }
+
 }

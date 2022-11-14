@@ -5,6 +5,15 @@
       Company Details
     </h3>
     <div class="card-body">
+      <div
+        *ngIf="isLoaderRequired"
+        class="p-5 d-flex flex-column justify-content-center spinner align-items-center"
+      >
+        <div class="spinner-border text-success" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="small pt-2 text-success">Loading…</div>
+      </div>
       <div id="table" class="table-editable">
         <div class="input-group">
           <button
@@ -21,10 +30,18 @@
             placeholder="Company Name/Code"
             aria-label="Search"
             aria-describedby="search-addon"
+            #searchDatahhgh
           />
-          <button type="button" class="btn btn-outline-primary searchBtn">
+          <button
+            type="button"
+            class="btn btn-outline-primary searchBtn"
+            (click)="searchData(searchDatahhgh.value)"
+          >
             search
           </button>
+          <small class="erroMsg">
+            {{ errorMsgSer }}
+          </small>
         </div>
         <table
           class="table table-bordered table-responsive-md table-striped text-center"
