@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyModal } from '../models/CompanyModal';
 import { StockModal } from '../models/StockModal';
+import { StockSearch } from '../models/StockSearch';
 import { CompanyserviceService } from '../Services/companyservice.service';
 import { StockService } from '../Services/stock.service';
 
@@ -17,7 +18,7 @@ export class StockComponent implements OnInit {
   listOfCompanies:Array<CompanyModal>=[];
   serachdata='dates';
   addStockModal=new StockModal("Select","",0,"",0,Math.floor( Math.random()),new Date,new Date,new Date);
-
+  stockSearch =new StockSearch('dates','','','');
   updateStockModal=new StockModal("","",0,"",0,Math.floor( Math.random()),new Date,new Date,new Date);
   isLoaderRequired=true;
   ngOnInit(): void {
@@ -68,15 +69,36 @@ export class StockComponent implements OnInit {
   refreshUpdateStn(){
     this.stockData.map(st=>st.companyName=(this.listOfCompanies.filter(l=>l.companyCode==st.companyCode).map(m=>m.companyName)[0]))
     }
-
-    searchByDates(startDate:string,endDate:string){
-      this.isLoaderRequired=true;
-      
-      this.stockSer.serachByStockData(startDate,endDate).subscribe(res=>{
+    isChanges(){
+      this.stockSearch=this.stockSearch =new StockSearch(this.stockSearch.serachString,'','','');
+    }
+    searchByDates(){
+console.log(this.stockSearch);
+this.isLoaderRequired=true;
+      if(this.stockSearch.serachString=='dates'&&(this.stockSearch.startDate==null || this.stockSearch.startDate==undefined || this.stockSearch.startDate=='')){
+        alert("Please Select Start Date");
+        this.isLoaderRequired=false;
+      }else if(this.stockSearch.serachString=='dates'&&(this.stockSearch.endDate==null || this.stockSearch.endDate==undefined || this.stockSearch.endDate==''))
+      {
+        alert("Please Select End Date");
+        this.isLoaderRequired=false;
+      }else if(this.stockSearch.serachString=='compCode'&&(this.stockSearch.serByCompany==null || this.stockSearch.serByCompany==undefined || this.stockSearch.serByCompany=='')){
+        alert("Please Enter CompanyCode");
+        this.isLoaderRequired=false;
+      }
+      else if(this.stockSearch.serachString=='dates'){
+      this.stockSer.serachByStockData(this.stockSearch.startDate,this.stockSearch.endDate).subscribe(res=>{
         this.stockData=res;
         this.refreshUpdateStn();
         this.isLoaderRequired=false;
       });
+    }else{
+      this.stockSer.serachByCompanyCode(this.stockSearch.serByCompany).subscribe(res=>{
+        this.stockData=res;
+        this.refreshUpdateStn();
+        this.isLoaderRequired=false;
+      });
+    }
       
     }
 

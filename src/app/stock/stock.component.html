@@ -29,38 +29,47 @@
           <select
             class="form-control rounded"
             style="border-color: #007bff"
-            [(ngModel)]="serachdata"
+            [(ngModel)]="stockSearch.serachString"
+            (change)="isChanges()"
           >
             <option value="dates" class="form-control rounded">
               Ser. Dates
             </option>
-            <option value="compName" class="form-control rounded">
-              Ser. CompanyName
+            <option value="compCode" class="form-control rounded">
+              Ser. CompanyCode
             </option>
           </select>
           <input
             style="margin-right: 10px; width: 0px; border-color: #007bff"
             type="search"
             class="form-control rounded"
-            placeholder="Company Name/Code"
+            placeholder="Company Code"
             aria-label="Search"
             aria-describedby="search-addon"
             #searchDatahhgh
-            *ngIf="serachdata == 'compName'"
+            [(ngModel)]="stockSearch.serByCompany"
+            *ngIf="stockSearch.serachString == 'compCode'"
+            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
           />
           <input
             type="date"
             class="btn btn-outline-primary"
             #startDate
-            *ngIf="serachdata == 'dates'"
+            *ngIf="stockSearch.serachString == 'dates'"
+            [(ngModel)]="stockSearch.startDate"
           />
           <input
             type="date"
             class="btn btn-outline-primary"
             #endDate
-            *ngIf="serachdata == 'dates'"
+            *ngIf="stockSearch.serachString == 'dates'"
+            [(ngModel)]="stockSearch.endDate"
           />
-          <button type="button" class="btn btn-outline-primary stockBtn">
+          <button
+            type="button"
+            class="btn btn-outline-primary stockBtn"
+            (click)="searchByDates()"
+          >
             search
           </button>
         </div>
@@ -70,7 +79,7 @@
           class="table table-bordered table-responsive-md table-striped text-center"
         >
           <tr>
-            <!-- <th class="text-center">Comapny Code</th> -->
+            <th class="text-center">Company Code</th>
             <th class="text-center">Company Name</th>
             <th class="text-center">Stock Name</th>
             <th class="text-center">Stock Price</th>
@@ -79,9 +88,9 @@
             <th class="text-center">Action</th>
           </tr>
           <tr *ngFor="let stock of stockData; let id = index">
-            <!-- <td>
+            <td>
               <span contenteditable="false">{{ stock.companyCode }}</span>
-            </td> -->
+            </td>
             <td>
               <span contenteditable="false">{{ stock.companyName }}</span>
             </td>

@@ -32,4 +32,8 @@ export class StockService {
     return this.service.get('stock/'+startDate+'/'+endDate);
    }
 
+   serachByCompanyCode(companyCode:any){
+    return this.service.get('stock/getStockBycompanyCode/'+companyCode);
+   }
+
 }
