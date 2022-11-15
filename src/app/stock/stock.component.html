@@ -46,7 +46,6 @@
             placeholder="Company Code"
             aria-label="Search"
             aria-describedby="search-addon"
-            #searchDatahhgh
             [(ngModel)]="stockSearch.serByCompany"
             *ngIf="stockSearch.serachString == 'compCode'"
             onkeypress="return event.charCode >= 48 && event.charCode <= 57"
@@ -54,14 +53,12 @@
           <input
             type="date"
             class="btn btn-outline-primary"
-            #startDate
             *ngIf="stockSearch.serachString == 'dates'"
             [(ngModel)]="stockSearch.startDate"
           />
           <input
             type="date"
             class="btn btn-outline-primary"
-            #endDate
             *ngIf="stockSearch.serachString == 'dates'"
             [(ngModel)]="stockSearch.endDate"
           />
