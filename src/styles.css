@@ -19,17 +19,6 @@
 color: #0a100c;
 font-style: oblique;
 }
-.stockSearch{
-margin-left: 420px;
-}
-.serachDate {
-    font-size: 73%;
-    font-weight: 400;
-    margin-right: 8px;
-    color: #04c;
-    font-style: italic;
-}
-
 .spinner{
     position: absolute;
     margin: -36px 500px;
@@ -37,10 +26,14 @@ margin-left: 420px;
     height: 96%;
 }
 
-.searchBystockData{
-    width: 137px;
-    height: 35px;
-    padding-bottom: 6px;
-    border-color: #007bff;
+.stockSerachTab{
+    width: 63%; float: right
+}
+.serchByCom{
+    margin-right: 10px; width: 0px; border-color: #007bff
 }
 
+.stockBtn
+{
+    margin-left: 6px
+}

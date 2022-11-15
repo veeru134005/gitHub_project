@@ -15,7 +15,7 @@ export class StockComponent implements OnInit {
 
   stockData:Array<StockModal>=[];
   listOfCompanies:Array<CompanyModal>=[];
-
+  serachdata='dates';
   addStockModal=new StockModal("Select","",0,"",0,Math.floor( Math.random()),new Date,new Date,new Date);
 
   updateStockModal=new StockModal("","",0,"",0,Math.floor( Math.random()),new Date,new Date,new Date);

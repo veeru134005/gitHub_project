@@ -25,23 +25,42 @@
             Add Stock
           </button>
         </div>
-        <div style="width: 36%; float: right">
+        <div style="width: 63%; float: right" class="input-group">
+          <select
+            class="form-control rounded"
+            style="border-color: #007bff"
+            [(ngModel)]="serachdata"
+          >
+            <option value="dates" class="form-control rounded">
+              Ser. Dates
+            </option>
+            <option value="compName" class="form-control rounded">
+              Ser. CompanyName
+            </option>
+          </select>
           <input
-            *ngIf="false"
+            style="margin-right: 10px; width: 0px; border-color: #007bff"
             type="search"
             class="form-control rounded"
             placeholder="Company Name/Code"
             aria-label="Search"
             aria-describedby="search-addon"
             #searchDatahhgh
+            *ngIf="serachdata == 'compName'"
           />
-          <input type="date" class="btn btn-outline-primary" #startDate />
-          <input type="date" class="btn btn-outline-primary" #endDate />
-          <button
-            type="button"
+          <input
+            type="date"
             class="btn btn-outline-primary"
-            (click)="searchByDates(startDate.value, endDate.value)"
-          >
+            #startDate
+            *ngIf="serachdata == 'dates'"
+          />
+          <input
+            type="date"
+            class="btn btn-outline-primary"
+            #endDate
+            *ngIf="serachdata == 'dates'"
+          />
+          <button type="button" class="btn btn-outline-primary stockBtn">
             search
           </button>
         </div>
